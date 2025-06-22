@@ -1,0 +1,47 @@
+﻿@model IEnumerable<ktm_project.Models.KtmKomuterModel>
+
+<html>
+
+<head>
+    <title>Ticket List</title>
+    <link href="~/css/mrt.css" rel="stylesheet" />
+</head>
+
+<body>
+    <h5>Ticket List</h5>
+
+
+    <table class="table">
+        <tr>
+            <th>@Html.DisplayNameFor(x => x.ViewId)</th>
+            <th>@Html.DisplayNameFor(x => x.ViewDateTime)</th>
+            <th>@Html.DisplayNameFor(x => x.Name)</th>
+            <th>@Html.DisplayNameFor(x => x.IdentityPassportNumber)</th>
+            <th>@Html.DisplayNameFor(x => x.EmailAddress)</th>
+            <th>@Html.DisplayNameFor(x => x.startDestination)</th>
+            <th>@Html.DisplayNameFor(x => x.endDestination)</th>
+            <th>@Html.DisplayNameFor(x => x.TotalAmount)</th>
+            <th>@Html.DisplayNameFor(x => x)</th>
+        </tr>
+
+        @foreach (var x in Model)
+        {
+            <tr>
+                <th style="font-weight: normal;">@Html.DisplayFor(y => x.ViewId)</th>
+                <th style="font-weight: normal;">@Html.DisplayFor(y => x.ViewDateTime)</th>
+                <th style="font-weight: normal;">@Html.DisplayFor(y => x.Name)</th>
+                <th style="font-weight: normal;">@Html.DisplayFor(y => x.IdentityPassportNumber)</th>
+                <th style="font-weight: normal;">@Html.DisplayFor(y => x.EmailAddress)</th>
+                <th style="font-weight: normal;">@Html.DisplayFor(y => x.DictstartDestination[x.startDestination])</th>
+                <th style="font-weight: normal;">@Html.DisplayFor(y => x.DictendDestination[x.endDestination])</th>
+                <th style="font-weight: normal;">@Html.DisplayFor(y => x.TotalAmount)</th>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = x.ViewId}) |
+                    @Html.ActionLink("Mail", "SendMail", new { id = x.ViewId })
+                </td>
+            </tr>
+        }
+    </table>
+</body>
+
+</html>

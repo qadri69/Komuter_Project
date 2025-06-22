@@ -1,0 +1,12 @@
+﻿body {
+    background-image: url("../Images/KTMB2.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+footer {
+    color: white;
+    background: none;
+    background-color: #4463AC;
+}
+

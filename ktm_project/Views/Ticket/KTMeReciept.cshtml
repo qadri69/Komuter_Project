@@ -1,0 +1,47 @@
+﻿@model ktm_project.Models.KtmKomuterModel;
+
+<head>
+
+    <title>Ticket Invoice</title>
+    <link href="~/mrt/PosLaju.css" rel="stylesheet" />
+
+</head>
+
+<body>
+    <p>
+        <label>Ticket Id:</label>
+        @Html.DisplayFor(x => x.TicketId)
+    </p>
+    <p>
+        <label>Date and Time:</label>
+        @Html.DisplayFor(x => x.TicketDateTime)
+    </p>
+
+    <h5>Ticket Information</h5>
+
+    <p>
+        <label>Name:</label>
+        @Html.DisplayFor(x => x.Name)
+    </p>
+    <p>
+        <label>Identifiction Number</label>
+        @Html.DisplayFor(x => x.IdentityPassportNumber)
+    </p>
+    <p>
+        <label>Email Address:</label>
+        @Html.DisplayFor(x => x.EmailAddress)
+    </p>
+    <p>
+        <label>From:</label>
+        @Html.DisplayFor(x => x.DictstartDestination[Model.startDestination])
+    </p>
+    <p>
+        <label>To:</label>
+        @Html.DisplayFor(x => x.DictendDestination[Model.endDestination])
+    </p>
+    <p>
+        <label>Amount:</label>
+        @Html.DisplayFor(x => x.TotalAmount)
+    </p>
+
+</body>

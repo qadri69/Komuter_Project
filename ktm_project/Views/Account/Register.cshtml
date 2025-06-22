@@ -1,0 +1,32 @@
+﻿@model ktm_project.Models.User;
+<head>
+
+    <title>Register</title>
+
+
+</head>
+
+<body>
+    <h2>Register</h2>
+    @using (Html.BeginForm())
+    {
+        <p>
+            <label>UserName:</label>
+            @Html.TextBoxFor(x => x.Username)
+            @Html.ValidationMessageFor(x => x.Username)
+        </p>
+        <p>
+            <label>Password:</label>
+            @Html.PasswordFor(x => x.Password)
+            @Html.ValidationMessageFor(x => x.Password)
+        </p>
+        <p>
+            <label>Email:</label>
+            @Html.TextBoxFor(x => x.Email)
+            @Html.ValidationMessageFor(x => x.Email)
+        </p>
+        <p>
+            <input type="submit" value="Submit" />
+        </p>
+    }
+</body>

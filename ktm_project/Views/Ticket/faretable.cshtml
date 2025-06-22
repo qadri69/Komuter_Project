@@ -1,0 +1,72 @@
+﻿@model ktm_project.Models.FareTableViewModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Fare Table</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 5px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h2>Laluan / Route: Pel. Klang - Batu Caves</h2>
+
+    
+
+    @using (Html.BeginForm("faretable", "Ticket", FormMethod.Get))
+    {
+        <p>
+            @Html.LabelFor(model => model.SelectedFareType, "Select Fare Type:")
+            @Html.DropDownListFor(
+                     model => model.SelectedFareType,
+                     new SelectList(Model.FareTypes, Model.SelectedFareType),
+                     "Select Fare Type",
+                     new { @class = "form-control" }
+                     )
+            <input type="submit" value="Apply" class="btn btn-primary" />
+            
+        </p>
+    }
+    
+
+    <table>
+        <thead>
+            <tr>
+                <th>Stesen</th>
+                
+                
+                @foreach (var station in Model.Stations.Values)
+                {
+                    <th>@station</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.Stations.Count; i++)
+            {
+                <tr>
+                    <td><strong>@Model.Stations[i]</strong></td>
+                    @for (int j = 0; j < Model.Stations.Count; j++)
+                    {
+                        <td>@Model.GetDiscountedRate(i, j).ToString("0.00")</td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>

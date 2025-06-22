@@ -1,0 +1,58 @@
+﻿@model ktm_project.Models.KtmKomuterModel;
+
+<head>
+
+    <title>Ticket Form</title>
+    
+    <link href="~/css/ktm.css" rel="stylesheet" />
+
+
+</head>
+
+<body>
+    
+    @using (Html.BeginForm())
+    {
+
+        <div class="card text-white bg-dark mb-3" style="max-width: 180rem;">
+            <div class="card-header">KTM eTicketing</div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <label>Name:</label>
+                        @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.Name, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col">
+                        <label>Identity Card Number:</label>
+                        @Html.TextBoxFor(x => x.IdentityPassportNumber, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.IdentityPassportNumber, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col">
+                        <label>Email Address:</label>
+                        @Html.TextBoxFor(x => x.EmailAddress, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.EmailAddress, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col">
+                        <label>From:</label>
+                        @Html.DropDownListFor(x => x.startDestination,
+                                 new SelectList(Model.DictstartDestination, "Key", "Value"), "Select From: ", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.startDestination, "", new { @class = "text-danger" })
+
+                    </div>
+                    <div class="col">
+                        <label>To:</label>
+                        @Html.DropDownListFor(x => x.endDestination,
+                                 new SelectList(Model.DictendDestination, "Key", "Value"), "Select To: ", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.endDestination, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col">
+                        <br />
+                        <input type="submit" value="Buy Now" class="btn btn-primary mb-2" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    }
+</body>
